@@ -36,3 +36,14 @@ def get_mentors_by_city(cursor, city):
         """
     cursor.execute(query, {'city': city})
     return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_applicant_data_by_name(cursor, applicant_name):
+    query = """
+        SELECT first_name, last_name, phone_number
+        FROM applicant
+        WHERE first_name=%(applicant_name)s
+        """
+    cursor.execute(query, {'applicant_name': applicant_name})
+    return cursor.fetchall()

@@ -10,7 +10,11 @@
     </nav>
 
     <section class="search">
-{#        <h3>Search for applicants</h3>#}
-
+        <h3>Search for applicants</h3>
+        <form action="{{ url_for('applicants_phone') }}">
+            <label for="name-input"></label>
+            <input type="text" id="name-input" name="applicant-name">
+            <button type="Submit">Search</button>
+        </form>
     </section>
 {% endblock %}

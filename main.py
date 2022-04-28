@@ -28,5 +28,16 @@ def mentors_list():
     return render_template('mentors.html', mentors=mentor_details)
 
 
+@app.route('/applicants-phone')
+def applicants_phone():
+    applicant_name = request.args.get('applicant-name')
+
+    if applicant_name:
+        applicant_details = data_manager.get_applicant_data_by_name(applicant_name)
+
+    return render_template('applicant.html', applicants=applicant_details)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,
+            port=8000)

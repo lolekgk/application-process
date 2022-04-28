@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect
-
+from dotenv import load_dotenv
 import data_manager
 
+load_dotenv()
 app = Flask(__name__)
 
 
@@ -13,9 +14,12 @@ def index():
 @app.route('/mentors')
 def mentors_list():
     mentor_name = request.args.get('mentor-last-name')
+    city = request.args.get('city-name')
 
     if mentor_name:
         mentor_details = data_manager.get_mentors_by_last_name(mentor_name)
+    elif city:
+        mentor_details = data_manager.get_mentors_by_city(city)
     else:
         mentor_details = data_manager.get_mentors()
 

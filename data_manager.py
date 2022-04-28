@@ -18,9 +18,9 @@ def get_mentors(cursor):
 
 @database_common.connection_handler
 def get_mentors_by_last_name(cursor, last_name):
-    query = """
+    query = f"""
         SELECT first_name, last_name, city
         FROM mentor
-        ORDER BY first_name"""
+        ORDER BY last_name='{last_name}' DESC, first_name ASC"""
     cursor.execute(query)
     return cursor.fetchall()

@@ -15,9 +15,10 @@
         {% endfor %}
         <form action="{{ url_for('applicants_list') }}" method="post">
             <label for="email-input">Delete applicant:</label>
-            <input type="text" id="email-input" name="email-ending">
+            <input type="text" id="email-input" name="email-ending" placeholder="Email">
             <button type="submit">Submit</button>
         </form>
+        <a href="{{ url_for('add_applicant') }}">Add new applicant</a>
     </div>
     {% include 'footer.html' %}
 {% endblock %}

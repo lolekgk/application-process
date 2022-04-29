@@ -90,4 +90,14 @@ def update_applicant_phone_number(cursor, new_phone_number, code):
         WHERE application_code = %(application_code)s
         """
     cursor.execute(query, {'new_number': new_phone_number, 'application_code': code})
-    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def delete_applicant_data(cursor, code):
+    query = """
+        DELETE 
+        FROM applicant
+        WHERE application_code = %s
+        """
+    cursor.execute(query, (code,))
+

@@ -107,6 +107,16 @@ def delete_applicant_by_email(cursor, applicant_email_ending):
     query = """
         DELETE
         FROM applicant
-        WHERE email LIKE '%%' || %(email)s || '%%'
+        WHERE email LIKE '%%' || %(email)s
         """
     cursor.execute(query, {'email': applicant_email_ending})
+
+
+@database_common.connection_handler
+def add_new_applicant(cursor, first_name, last_name, phone_number, email, application_code):
+    query = """
+        INSERT INTO applicant (first_name, last_name, phone_number, email, application_code)
+        VALUES (%(first_name)s, %(last_name)s, %(phone_number)s, %(email)s, %(application_code)s)
+        """
+    cursor.execute(query, {'first_name': first_name, 'last_name': last_name, 'phone_number': phone_number,
+                           'email': email, 'application_code': application_code})

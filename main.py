@@ -60,6 +60,17 @@ def delete_applicant(code):
     return redirect(url_for('applicants_list'))
 
 
+@app.route('/add-applicant', methods=['GET', 'POST'])
+def add_applicant():
+    if request.method == 'POST':
+        first_name = request.form['first-name']
+        last_name = request.form['last-name']
+        phone_number = request.form['phone-number']
+        email = request.form['email']
+        application_code = request.form['application_code']
+        data_manager.add_new_applicant(first_name, last_name, phone_number, email, application_code)
+        return redirect(url_for('edit_applicant_data', code=application_code))
+    return render_template('add-applicant.html')
 
 
 if __name__ == '__main__':

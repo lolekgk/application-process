@@ -6,7 +6,16 @@
 
 {% block content %}
     <div>
-    elko
+    {% for applicant in applicants %}
+    <form action="{{ url_for('edit_applicant_data', code=code) }}" method="post">
+    Name:
+        {{ applicant.first_name + ' ' + applicant.last_name }},
+        <label for="phone-input"></label>
+    Phone number:
+        <input type="text" id="phone-input" name="new-phone" value="{{ applicant.phone_number }}">
+        <button type="submit">Submit</button>
+    </form>
+    {% endfor %}
     </div>
     {% include 'footer.html' %}
 {% endblock %}

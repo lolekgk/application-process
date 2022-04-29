@@ -15,6 +15,7 @@
         <input type="text" id="phone-input" name="new-phone" value="{{ applicant.phone_number }}">
         <button type="submit">Submit</button>
     </form>
+        <a href="{{ url_for('delete_applicant', code=code) }}">Delete applicant</a>
     {% endfor %}
     </div>
     {% include 'footer.html' %}

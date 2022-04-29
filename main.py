@@ -47,10 +47,13 @@ def applicants_phone():
     return render_template('applicant.html', applicants=applicant_details)
 
 
-@app.route('/applicants/<code>')
+@app.route('/applicants/<code>', methods=['GET', 'POST'])
 def edit_applicant_data(code):
     #  update query if POST
-    return render_template('edit-applicant-data.html', code=code)
+    # if request.method =='POST':
+    #     UPDATE DB
+    applicant_details = data_manager.get_applicant_data_by_code(code)
+    return render_template('edit-applicant-data.html', code=code, applicants=applicant_details)
 
 
 if __name__ == '__main__':

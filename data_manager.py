@@ -69,3 +69,14 @@ def get_applicant_data_by_email_ending(cursor, applicant_email_ending):
         """
     cursor.execute(query, {'email': applicant_email_ending})
     return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_applicant_data_by_code(cursor, code):
+    query = """
+        SELECT first_name, last_name, phone_number
+        FROM applicant
+        WHERE application_code=%s
+        """
+    cursor.execute(query, (code,))
+    return cursor.fetchall()

@@ -101,3 +101,12 @@ def delete_applicant_data(cursor, code):
         """
     cursor.execute(query, (code,))
 
+
+@database_common.connection_handler
+def delete_applicant_by_email(cursor, applicant_email_ending):
+    query = """
+        DELETE
+        FROM applicant
+        WHERE email LIKE '%%' || %(email)s || '%%'
+        """
+    cursor.execute(query, {'email': applicant_email_ending})

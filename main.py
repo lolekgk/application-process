@@ -49,14 +49,19 @@ def applicants_phone():
 
 @app.route('/applicants/<code>', methods=['GET', 'POST'])
 def edit_applicant_data(code):
-    #  update query if POST
+
     if request.method == 'POST':
         data_manager.update_applicant_phone_number(request.form['new-phone'], code)
-        applicant_details = data_manager.get_applicant_data_by_code(code)
-        return render_template('edit-applicant-data.html', code=code, applicants=applicant_details)
-    #     UPDATE DB
+        return redirect(url_for('edit_applicant_data', code=code))
+
     applicant_details = data_manager.get_applicant_data_by_code(code)
     return render_template('edit-applicant-data.html', code=code, applicants=applicant_details)
+
+
+@app.route('/applicants/<code>/delete')
+def delete_applicant(code):
+    data_manager.delete_applicant_data(code)
+    return redirect(url_for('applicants_list'))
 
 
 if __name__ == '__main__':

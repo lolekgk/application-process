@@ -39,11 +39,33 @@ def get_mentors_by_city(cursor, city):
 
 
 @database_common.connection_handler
+def get_applicants(cursor):
+    query = """
+        SELECT first_name, last_name, phone_number, email, application_code
+        FROM applicant
+        ORDER BY first_name
+        """
+    cursor.execute(query)
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
 def get_applicant_data_by_name(cursor, applicant_name):
     query = """
         SELECT first_name, last_name, phone_number
         FROM applicant
-        WHERE first_name=%(applicant_name)s
+        WHERE first_name=%s
         """
-    cursor.execute(query, {'applicant_name': applicant_name})
+    cursor.execute(query, (applicant_name,))
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_applicant_data_by_email_ending(cursor, applicant_email_ending):
+    query = """
+        SELECT first_name, last_name, phone_number
+        FROM applicant
+        WHERE email LIKE '%%' || %(email)s || '%%'
+        """
+    cursor.execute(query, {'email': applicant_email_ending})
     return cursor.fetchall()

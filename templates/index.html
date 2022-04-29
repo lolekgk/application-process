@@ -1,25 +1,27 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <nav class="menu">
-        <h3>Choose a list</h3>
-        <ul>
-            <li><a href="{{ url_for('mentors_list') }}">Mentors</a></li>
-            <li><a href="{{ url_for('applicants_list') }}">Applicants</a></li>
-        </ul>
-    </nav>
+    <div class="grid-container-element">
+        <nav class="grid-child-element menu">
+            <h3>Choose a list</h3>
+            <ul>
+                <li><a href="{{ url_for('mentors_list') }}">Mentors</a></li>
+                <li><a href="{{ url_for('applicants_list') }}">Applicants</a></li>
+            </ul>
+        </nav>
 
-    <section class="search">
-        <h3>Search for applicants</h3>
-        <form action="{{ url_for('applicants_phone') }}" method="post">
-            <label for="name-input">Name</label><br>
-            <input type="text" id="name-input" name="applicant-name" placeholder="Provide name">
-            <button type="Submit">Search</button>
-        </form>
-        <form action="{{ url_for('applicants_phone') }}" method="post">
-            <label for="email-input">E-mail</label><br>
-            <input type="text" id="email-input" name="email-ending" placeholder="Provide e-mail ending">
-            <button type="Submit">Search</button>
-        </form>
-    </section>
+        <section class="grid-child-element search">
+            <h3>Search for applicants</h3>
+            <form action="{{ url_for('applicants_phone') }}" method="post" id="name-search">
+                <label for="name-input">Name</label><br>
+                <input type="text" id="name-input" name="applicant-name" placeholder="Provide name">
+                <button type="Submit">Search</button>
+            </form>
+            <form action="{{ url_for('applicants_phone') }}" method="post" id="email-search">
+                <label for="email-input">E-mail</label><br>
+                <input type="text" id="email-input" name="email-ending" placeholder="Provide e-mail ending">
+                <button type="Submit">Search</button>
+            </form>
+        </section>
+    </div>
 {% endblock %}

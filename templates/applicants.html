@@ -5,20 +5,24 @@
 {% endblock %}
 
 {% block content %}
-    <div id="applicants">
-        {% for applicant in applicants %}
-          Name: {{ applicant.first_name + ' ' + applicant.last_name }},
-          Phone number:  {{ applicant.phone_number}},
-          Email:  {{applicant.email }},
-          Application code:  {{ applicant.application_code }}
-            <a href="/applicants/{{ applicant.application_code }}">Edit</a><br><br>
-        {% endfor %}
+    <div id="applicants-action">
         <form action="{{ url_for('applicants_list') }}" method="post">
             <label for="email-input">Delete applicant:</label>
             <input type="text" id="email-input" name="email-ending" placeholder="Email">
             <button type="submit">Submit</button>
         </form>
-        <a href="{{ url_for('add_applicant') }}">Add new applicant</a>
+        <a href="{{ url_for('add_applicant') }}">Add new applicant</a><br>
     </div>
+
+    <div id="applicants">
+        {% for applicant in applicants %}
+            <b class="applicant-data">Name</b>: {{ applicant.first_name + ' ' + applicant.last_name }},
+            <b class="applicant-data">Phone number</b>:  {{ applicant.phone_number}},
+            <b class="applicant-data">Email</b>:  {{applicant.email }},
+            <b class="applicant-data">Application code</b>:  {{ applicant.application_code }}
+            <a href="/applicants/{{ applicant.application_code }}">Edit</a><br><br>
+        {% endfor %}
+    </div>
+
     {% include 'footer.html' %}
 {% endblock %}

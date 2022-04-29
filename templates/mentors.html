@@ -5,26 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <form action="/mentors">
-            <label for="name-input">Filter by mentor last name:</label>
-            <input id="name-input" type="text" name="mentor-last-name">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+    <div class="filter-container">
+        <div class="filter-child last_name">
+            <form action="/mentors">
+                <label for="name-input">Filter by mentor last name:</label>
+                <input id="name-input" type="text" name="mentor-last-name">
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
-    <div>
-        <form action="/mentors">
-            <label for="city-input">Filter by cities:</label>
-            <select name="city-name" id="city-input">
-                <option value="Bucharest">Bucharest</option>
-                <option value="Budapest">Budapest</option>
-                <option value="Kraków">Kraków</option>
-                <option value="Miskolc">Miskolc</option>
-                <option value="Warsaw">Warsaw</option>
-            </select>
-            <button type="submit">Search</button>
-        </form>
+        <div class="filter-child city">
+            <form action="/mentors">
+                <label for="city-input">Filter by cities:</label>
+                <select name="city-name" id="city-input">
+                    <option value="Bucharest">Bucharest</option>
+                    <option value="Budapest">Budapest</option>
+                    <option value="Kraków">Kraków</option>
+                    <option value="Miskolc">Miskolc</option>
+                    <option value="Warsaw">Warsaw</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </div>
 
     <div id="mentors">

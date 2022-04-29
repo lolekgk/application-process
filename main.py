@@ -45,7 +45,7 @@ def applicants_phone():
     return render_template('applicant.html', applicants=applicant_details)
 
 
-@app.route('/applicants/<code>', methods=['GET', 'POST'])
+@app.route('/applicants/<int:code>', methods=['GET', 'POST'])
 def edit_applicant_data(code):
     if request.method == 'POST':
         data_manager.update_applicant_phone_number(request.form['new-phone'], code)
@@ -54,7 +54,7 @@ def edit_applicant_data(code):
     return render_template('edit-applicant-data.html', code=code, applicants=applicant_details)
 
 
-@app.route('/applicants/<code>/delete')
+@app.route('/applicants/<int:code>/delete')
 def delete_applicant(code):
     data_manager.delete_applicant_data(code)
     return redirect(url_for('applicants_list'))

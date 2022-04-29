@@ -25,10 +25,11 @@ def mentors_list():
     return render_template('mentors.html', mentors=mentor_details)
 
 
-@app.route('/applicants', method=['GET', 'POST'])
+@app.route('/applicants', methods=['GET', 'POST'])
 def applicants_list():
     if request.method == 'POST':
         data_manager.delete_applicant_by_email(request.form['email-ending'])
+        return redirect(url_for('applicants_list'))
     applicants_details = data_manager.get_applicants()
     return render_template('applicants.html', applicants=applicants_details)
 

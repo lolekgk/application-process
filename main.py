@@ -28,14 +28,29 @@ def mentors_list():
     return render_template('mentors.html', mentors=mentor_details)
 
 
-@app.route('/applicants-phone')
+@app.route('/applicants')
+def applicants_list():
+    applicants_details = data_manager.get_applicants()
+    return render_template('applicants.html', applicants=applicants_details)
+
+
+@app.route('/applicants-phone', methods=['GET', 'POST'])
 def applicants_phone():
-    applicant_name = request.args.get('applicant-name')
+    applicant_name = request.form.get('applicant-name')
+    applicant_email_ending = request.form.get('email-ending')
 
     if applicant_name:
         applicant_details = data_manager.get_applicant_data_by_name(applicant_name)
+    else:
+        applicant_details = data_manager.get_applicant_data_by_email_ending(applicant_email_ending)
 
     return render_template('applicant.html', applicants=applicant_details)
+
+
+@app.route('/applicants/<code>')
+def edit_applicant_data(code):
+    #  update query if POST
+    return render_template('edit-applicant-data.html', code=code)
 
 
 if __name__ == '__main__':

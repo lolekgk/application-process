@@ -1,8 +1,109 @@
 body {
-    background-color: #008e9d;
+    font-family: Verdana, Helvetica, sans-serif;
+    background-color: #737272;
     color: white;
 }
 
-.content-wrapper {
-    padding: 10%;
+h1 {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    border: 2px solid black;
+    background-color: #332f2f;
 }
+
+h2.title-text-center{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+nav.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+}
+
+nav.menu ul li a {
+    display: block;
+}
+
+#mentors {
+    text-align: left;
+}
+
+#header-title{
+    top: auto;
+}
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    position: relative;
+    bottom: -70px;
+}
+
+.grid-container-element {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+}
+
+.grid-child-element {
+    margin: 10px;
+}
+
+#name-search, #email-search {
+    width: 180px;
+    display: inline-block;
+}
+
+.filter-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+}
+.filter-child {
+    margin: 10px;
+}
+
+#mentors {
+    padding-top: 30px;
+    position: relative;
+    left: 10px;
+    text-align: left;
+}
+
+#applicants-action form {
+    display: inline-block;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+#applicants {
+    padding-top: 30px;
+    position: relative;
+    left: 10px;
+    text-align: left;
+}
+
+#applicants .applicant-data {
+    text-decoration: underline;
+
+}
+

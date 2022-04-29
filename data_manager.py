@@ -80,3 +80,14 @@ def get_applicant_data_by_code(cursor, code):
         """
     cursor.execute(query, (code,))
     return cursor.fetchall()
+
+
+@database_common.connection_handler
+def update_applicant_phone_number(cursor, new_phone_number, code):
+    query = """
+        UPDATE applicant
+        SET phone_number = %(new_number)s
+        WHERE application_code = %(application_code)s
+        """
+    cursor.execute(query, {'new_number': new_phone_number, 'application_code': code})
+    return cursor.fetchall()

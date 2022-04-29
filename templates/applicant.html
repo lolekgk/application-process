@@ -8,7 +8,7 @@
     <div id="applicant">
     {% for applicant in applicants %}
        Name: {{ applicant.first_name + ' ' + applicant.last_name }},
-        Phone number: {{ applicant.phone_number }}
+       Phone number: {{ applicant.phone_number }}
     {% endfor %}
     </div>
     {% include 'footer.html' %}
